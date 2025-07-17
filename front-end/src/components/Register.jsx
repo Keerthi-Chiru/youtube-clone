@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 export default function Register() {
@@ -39,7 +39,7 @@ export default function Register() {
 
             return (
                 <>
-                    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+                    <div className="mt-20 flex items-center justify-center bg-gray-100">
                         <form onSubmit={handleSubmit} className="bg-white p-8 rounded shadow-md w-full max-w-md">
                             <h1 className="text-2xl text-red-500 font-bold mb-6 text-center">Register new user</h1>
                             <input
@@ -72,7 +72,7 @@ export default function Register() {
                             >
                                 Register
                             </button>
-                            <p className="text-sm text-center mt-4">Already have an account? <a href="/login" className="text-blue-600 underline">Login</a></p>
+                            <p className="text-sm text-center mt-4">Already have an account? <Link to="/login" className="text-blue-600 underline">Login</Link></p>
                         </form>
                         
                     </div>

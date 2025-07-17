@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App.jsx'
 import Register from './components/Register.jsx'
 import Login from './components/Login.jsx'
+import HomePage from './components/Homepage.jsx'
 
 
 const router = createBrowserRouter([
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
     element: <App />,
     // errorElement: <NotFound />,
     children:[
+      {
+        path: '/',
+        element: <HomePage />
+      },
       {
         path: '/login',
         element: <Login />
