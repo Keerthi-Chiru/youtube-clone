@@ -26,7 +26,7 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className={`${open ? "w-[160px]" : "w-20"} bg-gray-100 duration-100 p-5 min-h-screen flex flex-col  shadow-md`}>
+    <div className={`${open ? "w-[180px]" : "w-20"} bg-gray-100 duration-100 p-5 min-h-screen flex flex-col  shadow-md`}>
       <button onClick={() => setOpen(!open)} className="mb-4 text-xl items-center align-middle p-2">
         {(open)?<FaArrowLeft />:<FaBars />}
     

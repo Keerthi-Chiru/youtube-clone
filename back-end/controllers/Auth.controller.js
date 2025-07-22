@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import UserModel from '../models/user.model.js';
 import bcrypt from 'bcryptjs';
+import ChannelModel from '../models/Channel.model.js'
 
 export const registerUser = async (req, res) => {
     try{
@@ -29,6 +30,13 @@ export const registerUser = async (req, res) => {
         });
 
         await newUser.save();
+
+        const newChannel = new ChannelModel({
+            channelName: `${newUser.username}'s channel`,
+            channelDescription: "This is my personal Channel",
+            owner: newUser._id
+        })
+        newChannel.save();
 
         res.status(201).json({ message: "User registered successfully" });
 

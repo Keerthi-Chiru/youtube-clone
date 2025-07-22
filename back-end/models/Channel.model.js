@@ -18,4 +18,3 @@ const channelSchema = new mongoose.Schema({
 const ChannelModel = mongoose.model('Channel', channelSchema);
 
 export default ChannelModel;
-// This code defines a Mongoose schema for a Channel model in a MongoDB database.

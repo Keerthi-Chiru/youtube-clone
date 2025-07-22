@@ -5,6 +5,8 @@ import App from './App.jsx'
 import Register from './components/Register.jsx'
 import Login from './components/Login.jsx'
 import HomePage from './components/Homepage.jsx'
+import Upload from './components/Upload.jsx'
+import Channels from './components/Channels.jsx'
 
 
 const router = createBrowserRouter([
@@ -24,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register />
+      },
+      {
+        path: '/upload',
+        element: <Upload />
+      },
+      {
+        path: '/channels',
+        element: <Channels />
       }
     ]
   }

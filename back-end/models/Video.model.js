@@ -1,9 +1,9 @@
-import { text } from "body-parser";
-import { channel } from "diagnostics_channel";
+
 import mongoose from "mongoose";
 
 const videoSchema =  new mongoose.Schema({
     title: String,
+    videoUrl: String,
     thumbnailUrl: String,
     description: String,
     channel: {
@@ -32,4 +32,3 @@ const videoSchema =  new mongoose.Schema({
 const VideoModel = mongoose.model('Video', videoSchema);
 
 export default VideoModel;
-// This code defines a Mongoose schema for a Video model in a MongoDB database.
