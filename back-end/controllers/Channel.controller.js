@@ -14,3 +14,34 @@ export async function getChannels(req, res){
         res.status(500).json({message:error.message});
     }
 }
+
+export async function createChannel(req, res){
+    try{
+        const { channelName, description } = req.body;
+        const userId = req.userId;
+
+        const newChannel = new ChannelModel({
+            channelName,
+            channelDescription:description,
+            owner: userId,
+            subcribers:0
+        })
+
+        await newChannel.save();
+        res.status(201).json({message: "New Channel Created Successfully"})
+    }catch(err){
+        res.status(500).json({message:err.message})
+
+    }
+}
+
+export async function deleteChannel(req, res) {
+    try{
+        const channelId = req.params.id;
+        await ChannelModel.findOneAndDelete({_id:channelId});
+        res.status(200).json({message:"Channel deleted successfully"})
+    }catch(error){
+        res.status(500).json({message: error.message});
+    }
+    
+}

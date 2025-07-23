@@ -34,7 +34,8 @@ export const registerUser = async (req, res) => {
         const newChannel = new ChannelModel({
             channelName: `${newUser.username}'s channel`,
             channelDescription: "This is my personal Channel",
-            owner: newUser._id
+            owner: newUser._id,
+            subcribers:0,
         })
         newChannel.save();
 

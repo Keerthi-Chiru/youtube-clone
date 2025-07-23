@@ -23,7 +23,7 @@ export default function Header(){
     return(
         <>
             <navbar className="flex sticky top-0 z-50 h-20 items-center bg-gray-100 shadow-md p-3  justify-between ">
-                    <Link to="/" className="flex md:text-4xl font-[logo] text-red-700 hover:scale-105 text-xl">
+                    <Link to="/" className="flex md:text-4xl font-[logo] text-red-500 hover:scale-105 text-xl">
                         <p>MyTube</p>
                         <div className="text-4xl"><FaYoutube /></div>
                     </Link>
@@ -32,7 +32,7 @@ export default function Header(){
                     <button className="text-xl hover:scale-105"><FaMagnifyingGlass /></button>
                     </div>
                     <div className="flex gap-10 pr-10 font-bold text-lg ">
-                    <div className="hover:scale-105 flex items-center gap-1">Channel<div><GrChannel /></div></div>
+                    <Link to='/channels' className="hover:scale-105 flex items-center gap-1">Channel<div><GrChannel /></div></Link>
                     {
                         (users) ? (<>
                             <Link to="/upload" className="hover:scale-105 flex items-center gap-1 ">Upload<div><MdOutlineFileUpload /></div></Link>
