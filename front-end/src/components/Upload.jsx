@@ -32,7 +32,7 @@ export default function Upload(){
         }catch(error){
             console.error("Failed to load channels", error.response?.data || error.message)
             if(error.response?.status == 401){
-                alert("Session expired please ogin again");
+                alert("Session expired please login again");
                 localStorage.clear();
                 window.location.href = "/login"
             }
@@ -71,8 +71,11 @@ export default function Upload(){
                     channelName:""
                 });
             } catch(error){
-                alert("Error: " + error.message);
-            }
+            if(error.response?.status == 401){
+                alert("Session expired please login again");
+                localStorage.clear();
+                window.location.href = "/login"
+            }            }
         }
             return (
                 <>
@@ -125,11 +128,12 @@ export default function Upload(){
                                 className="w-full mb-6 px-4 py-2 border border-gray-300 rounded"
                             />
                             <select name="channelName" onChange={handleChange} className="w-full mb-6 px-4 py-2 border border-gray-300 rounded" required>
-                                <option value="">Select Channel</option>
-                                {
-                                    channels.map((channel)=>{
+                                <option value={formData.channelName}>Select Channel</option>
+                                { (channels) ? (
+                                    channels.map((channel) => {
                                         return <option value={channel.channelName} key={channel._id}>{channel.channelName}</option>
                                     })
+                                ) : null
                                 }
                             </select>
                             <button

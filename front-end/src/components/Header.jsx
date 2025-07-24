@@ -6,20 +6,28 @@ import { IoLogIn } from "react-icons/io5";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { IoLogOut } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 
 
 
-export default function Header(){
+export default function Header({ searchQuery, setSearchQuery }){
     let navigate = useNavigate();
     let users = localStorage.getItem("user")
-    
+    const [search, setSearch] = useState("");
+
 
 
     function handleLogout(){
         localStorage.removeItem("user");
+        localStorage.removeItem("token");
     }
-
+  function handleInputChange(e) {
+    setSearch(e.target.value);
+  }
+    function handleSearch(e){
+        setSearchQuery(search);
+    }
     return(
         <>
             <navbar className="flex sticky top-0 z-50 h-20 items-center bg-gray-100 shadow-md p-3  justify-between ">
@@ -28,8 +36,8 @@ export default function Header(){
                         <div className="text-4xl"><FaYoutube /></div>
                     </Link>
                     <div className="items-center hidden md:flex gap-3 ">
-                    <input type="text" className="border-1 rounded-xl w-75 focus:bg-gray-200  p-1"></input>
-                    <button className="text-xl hover:scale-105"><FaMagnifyingGlass /></button>
+                    <input type="text" className="border-1 rounded-xl w-75 focus:bg-gray-200  p-1"  value={search} onChange={handleInputChange}></input>
+                    <button className="text-xl hover:scale-105 cursor-pointer" onClick={handleSearch} ><FaMagnifyingGlass /></button>
                     </div>
                     <div className="flex gap-10 pr-10 font-bold text-lg ">
                     <Link to='/channels' className="hover:scale-105 flex items-center gap-1">Channel<div><GrChannel /></div></Link>

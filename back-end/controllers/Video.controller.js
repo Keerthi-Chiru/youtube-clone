@@ -32,3 +32,19 @@ export async function uploadVideo(req, res){
         res.status(500).json({error:err.message});
     }
 }
+
+
+export async function fetchVideos(req, res) {
+    try{
+
+    const videos = await VideoModel.find().populate('channel', 'channelName');
+
+    if(!videos){
+        return res.status(404).json({message: "No videos Found"})
+    }
+
+    res.status(200).json({videos});
+}catch(error){
+    res.status(500).json({message: error.message})
+}
+}

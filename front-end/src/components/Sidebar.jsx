@@ -9,7 +9,6 @@ import {
 } from "react-icons/fa";
 import { AiOutlineLike } from "react-icons/ai";
 import { MdOutlineFeaturedPlayList, MdOutlineSubscriptions } from "react-icons/md";
-import { PiArrowFatLinesLeftFill } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
 export default function Sidebar() {
@@ -34,7 +33,7 @@ export default function Sidebar() {
 
       <ul className="space-y-3">
         {menus.map((item, index) => (
-          <li key={index} className="flex  align-middle gap-3 text-sm hover:bg-gray-200 pt-4 rounded cursor-pointer w-[100%]">
+          <li key={index} className="flex  align-middle gap-3 text-sm hover:bg-gray-200 py-1 rounded cursor-pointer w-[100%]">
             {item.path ? (
               <Link to={item.path} className="flex items-center gap-3 align-middle p-2" >
                 <span className="text-lg">{item.icon}</span>
