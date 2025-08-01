@@ -11,10 +11,11 @@ import { useState } from "react";
 
 
 
-export default function Header({ searchQuery, setSearchQuery }){
+export default function Header({ searchQuery, setSearchQuery}){
     let navigate = useNavigate();
-    let users = localStorage.getItem("user")
+    let users = JSON.parse(localStorage.getItem("user") || "null");
     const [search, setSearch] = useState("");
+    console.log(users.username)
 
 
 
@@ -44,7 +45,7 @@ export default function Header({ searchQuery, setSearchQuery }){
                         (users) ? (<>
                             <Link to="/upload" className="hover:scale-105 flex items-center gap-1 ">Upload<div><MdOutlineFileUpload /></div></Link>
                             <Link to='/channels' className="hover:scale-105 flex items-center gap-1">Channel<div><GrChannel /></div></Link>
-                            <Link  className="hover:scale-105 flex items-center gap-1" onClick={handleLogout}>Logout<div className="text-2xl"><IoLogOut /></div></Link>
+                            <p className="hover:scale-105">Hi, {users.username}<Link  className=" flex items-center gap-1" onClick={handleLogout}> Logout<div className="text-2xl"><IoLogOut /></div></Link></p>
                         </>):(<>
                             <Link to="/login" className="hover:scale-105 flex items-center gap-1">Login<div className="text-2xl"><IoLogIn /></div></Link>
                         </>)

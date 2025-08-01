@@ -5,11 +5,13 @@ import { useState } from "react";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
+  const loginData = localStorage.getItem("user");
+  const [user, setUser] = useState(loginData);
 
 
   return (
     <div>
-    <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+    <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} user={user} />
     <div className="flex min-h-screen ">
       <div className="fixed z-50">
       <Sidebar />
