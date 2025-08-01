@@ -45,3 +45,17 @@ export async function deleteChannel(req, res) {
     }
     
 }
+
+export async function getChannel(req, res){
+    try{
+        const channelId = req.params.channelId
+        const channel = await ChannelModel.findOne({_id: channelId})
+        if(!channel){
+            res.status(404).json({message: "No Channel Found"})
+        }
+
+        res.status(200).json({channel})
+    }catch(error){
+        res.status(500).json({message: error.message})
+    }
+}

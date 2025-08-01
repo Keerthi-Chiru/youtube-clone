@@ -5,6 +5,8 @@ import { useState } from "react";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
+
+
   return (
     <div>
     <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />

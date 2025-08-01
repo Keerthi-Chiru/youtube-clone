@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { GrFormView } from "react-icons/gr";
 import { MdDeleteForever } from "react-icons/md";
 import { FaSquarePlus } from "react-icons/fa6";
@@ -6,6 +7,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
 export default function Channels() {
+  const navigate = useNavigate();
     const [formData, setFormData] = useState({
         channelName:"",
         description:""
@@ -95,6 +97,14 @@ const handleDelete = async (e, channelId) => {
     }
 
 }
+
+  const handleView = (e, channelId)=>{
+    e.preventDefault();
+    navigate(`/channel/${channelId}`);
+
+  }
+
+
   return (
     <>
       <h2 className="text-2xl font-bold mb-6 mt-10 text-red-500 text-center">Your Channels</h2>
@@ -109,7 +119,7 @@ const handleDelete = async (e, channelId) => {
             <div className="flex flex-col items-center gap-2">
               <div className="font-bold">{`Total Videos: ${channel.videos.length}`}</div>
               <div className="flex gap-4 h-10">
-                <button className="flex items-center bg-red-500 text-white rounded hover:bg-red-700 px-3">
+                <button className="flex items-center bg-red-500 text-white rounded hover:bg-red-700 px-3" onClick={(e)=> handleView(e, channel._id)}>
                   View <GrFormView className="ml-2 text-xl" />
                 </button>
                 <button className="flex items-center bg-red-500 text-white rounded hover:bg-red-700 px-3" onClick={(e)=>handleDelete(e, channel._id)}>

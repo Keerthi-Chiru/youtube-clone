@@ -19,8 +19,7 @@ export default function Header({ searchQuery, setSearchQuery }){
 
 
     function handleLogout(){
-        localStorage.removeItem("user");
-        localStorage.removeItem("token");
+        localStorage.clear();
     }
   function handleInputChange(e) {
     setSearch(e.target.value);
@@ -40,10 +39,11 @@ export default function Header({ searchQuery, setSearchQuery }){
                     <button className="text-xl hover:scale-105 cursor-pointer" onClick={handleSearch} ><FaMagnifyingGlass /></button>
                     </div>
                     <div className="flex gap-10 pr-10 font-bold text-lg ">
-                    <Link to='/channels' className="hover:scale-105 flex items-center gap-1">Channel<div><GrChannel /></div></Link>
+                    
                     {
                         (users) ? (<>
                             <Link to="/upload" className="hover:scale-105 flex items-center gap-1 ">Upload<div><MdOutlineFileUpload /></div></Link>
+                            <Link to='/channels' className="hover:scale-105 flex items-center gap-1">Channel<div><GrChannel /></div></Link>
                             <Link  className="hover:scale-105 flex items-center gap-1" onClick={handleLogout}>Logout<div className="text-2xl"><IoLogOut /></div></Link>
                         </>):(<>
                             <Link to="/login" className="hover:scale-105 flex items-center gap-1">Login<div className="text-2xl"><IoLogIn /></div></Link>

@@ -7,6 +7,9 @@ import Login from './components/Login.jsx'
 import HomePage from './components/Homepage.jsx'
 import Upload from './components/Upload.jsx'
 import Channels from './components/Channels.jsx'
+import Video from './components/Video.jsx'
+import Channel from './components/Channel.jsx'
+import Edit from './components/Edit.jsx'
 
 
 const router = createBrowserRouter([
@@ -34,6 +37,18 @@ const router = createBrowserRouter([
       {
         path: '/channels',
         element: <Channels />
+      },
+      {
+        path: '/:videoId',
+        element: <Video />
+      },
+      {
+        path: '/channel/:channelId',
+        element: <Channel />
+      },
+      {
+        path: '/edit/:videoId',
+        element: <Edit />
       }
     ]
   }

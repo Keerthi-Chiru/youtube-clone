@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, Link } from "react-router-dom";
 
 export default function HomePage() {
   const [allVideos, setAllVideos] = useState();
@@ -58,14 +58,16 @@ export default function HomePage() {
         <ul className="grid grid-cols-3 mx-30 gap-7 ml-70 my-10">
           {videos && videos.length > 0 ? (
             videos.map((video) => (
-              <li key={video._id} className="shadow-md rounded-lg bg-gray-100 hover:scale-105">
-                    <img src={video.thumbnailUrl} alt={video.title || "Video thumbnail"} className="h-50 w-150" />
-                    <div className="p-2">
-                    <p className="font-bold">{video.title}</p>
-                    <p>{video.channel.channelName}</p>
-                    <p className="">{video.category}</p>
-                    </div>
-              </li>
+              <Link to={`/${video._id}`}>
+                <li key={video._id} className="shadow-md rounded-lg bg-gray-100 hover:scale-105">
+                      <img src={video.thumbnailUrl} alt={video.title || "Video thumbnail"} className="h-50 w-150" />
+                      <div className="p-2">
+                      <p className="font-bold">{video.title}</p>
+                      <p>{video.channel.channelName}</p>
+                      <p className="">{video.category}</p>
+                      </div>
+                </li>
+              </Link>
             ))
           ) : (
             <li className="relative  w-screen h-screen justify-center align-middle text-red-500">No Videos to display</li>
