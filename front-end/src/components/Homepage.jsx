@@ -6,73 +6,111 @@ export default function HomePage() {
   const [category, setCategory] = useState("All");
   const [videos, setVideos] = useState();
 
+  // Get searchQuery from context (e.g. from Header or parent route)
   const { searchQuery } = useOutletContext();
 
-  useEffect(()=>{
-    async function fetchVideos(){
+  useEffect(() => {
+    // Fetch all videos from the backend API
+    async function fetchVideos() {
       try {
         const res = await fetch("http://localhost:5000/api/video", {
-                headers: { 
-                    'content-type': 'application/json',
-                }
-        } );
+          headers: { 'content-type': 'application/json' }
+        });
         const data = await res.json();
-        console.log(data);
-        if(res){
-          console.log(category);
-          if(category=="All"){
-          setAllVideos(data.videos)
-          } else{
-            setAllVideos(data.filter(item => item.category == category))
-          }
 
-        }else{
-          console.warn("No videos found")
+        console.log(data);
+
+        if (res.ok) {
+          // If category is "All", set all videos
+          // Else filter videos by selected category
+          if (category === "All") {
+            setAllVideos(data.videos);
+          } else {
+            setAllVideos(data.videos.filter(item => item.category === category));
+          }
+        } else {
+          console.warn("No videos found");
         }
-      } catch(error){
-        console.error("Failed to load channels", error.response?.data || error.message)
-        alert("Error: " +error.message);
+      } catch (error) {
+        console.error("Failed to load videos", error.response?.data || error.message);
+        alert("Error: " + error.message);
       }
     }
+
     fetchVideos();
-  },[])
+  }, [category]); // Re-fetch videos when category changes (optional optimization)
+
   useEffect(() => {
+    // Filter and set videos based on category and search query
     if (category === "All") {
       setVideos(allVideos);
     } else {
-      setVideos(allVideos.filter((item) => item.category === category));
+      setVideos(allVideos?.filter(item => item.category === category));
     }
-    if(searchQuery.trim()){
-      setVideos(allVideos.filter((item)=> item.title.toLowerCase().includes(searchQuery.toLowerCase())))
+
+    // If there is a search query, filter videos by title (case-insensitive)
+    if (searchQuery?.trim()) {
+      setVideos(allVideos?.filter(item =>
+        item.title.toLowerCase().includes(searchQuery.toLowerCase())
+      ));
     }
   }, [category, searchQuery, allVideos]);
 
   return (
     <>
-        <div className="sm:mx-70 px-20 sm:px-0 grid grid-cols-1  sm:flex gap-7 mt-5 w-screen">
-          <button onClick={()=>setCategory('All')} className="shadow-md  px-2 bg-gray-200 cursor-pointer border-1 focus:bg-gray-300 rounded-md">All</button>
-          <button onClick={()=>setCategory('Short Movie')} className="shadow-md  px-2 bg-gray-200 cursor-pointer border-1 focus:bg-gray-300 rounded-md">Short Movie</button>
-          <button onClick={()=>setCategory('Short Video')} className="shadow-md  px-2 bg-gray-200 cursor-pointer border-1 focus:bg-gray-300 rounded-md">Short Video</button>
-          <button onClick={()=>setCategory('Album Song')} className="shadow-md  px-2 bg-gray-200 cursor-pointer border-1 focus:bg-gray-300 rounded-md">Album Song</button>
-        </div>
-        <ul className="grid grid-cols-1 sm:grids-cols-2 md:grid-cols-2 lg:grid-cols-3 sm:mx-30 gap-7 sm:ml-70 ml-20  sm:mr-50 my-10">
-          {videos && videos.length > 0 ? (
-            videos.map((video) => (
-              <Link to={`/${video._id}`}>
-                <li key={video._id} className="shadow-md rounded-lg bg-gray-100 w-50 sm:w-auto hover:scale-105">
-                      <img src={video.thumbnailUrl} alt={video.title || "Video thumbnail"} className="h-50 w-50 sm:w-150" />
-                      <div className="p-2">
-                      <p className="font-bold">{video.title}</p>
-                      <p>{video.channel.channelName}</p>
-                      <p className="">{video.category}</p>
-                      </div>
-                </li>
-              </Link>
-            ))
-          ) : (
-            <li className="relative  w-screen h-screen justify-center align-middle text-red-500">No Videos to display</li>
-          )}
-        </ul>
+      {/* Category filter buttons */}
+      <div className="sm:mx-70 px-20 sm:px-0 grid grid-cols-1 sm:flex gap-7 mt-5 w-screen">
+        <button
+          onClick={() => setCategory('All')}
+          className="shadow-md px-2 bg-gray-200 cursor-pointer border-1 focus:bg-gray-300 rounded-md"
+        >
+          All
+        </button>
+        <button
+          onClick={() => setCategory('Short Movie')}
+          className="shadow-md px-2 bg-gray-200 cursor-pointer border-1 focus:bg-gray-300 rounded-md"
+        >
+          Short Movie
+        </button>
+        <button
+          onClick={() => setCategory('Short Video')}
+          className="shadow-md px-2 bg-gray-200 cursor-pointer border-1 focus:bg-gray-300 rounded-md"
+        >
+          Short Video
+        </button>
+        <button
+          onClick={() => setCategory('Album Song')}
+          className="shadow-md px-2 bg-gray-200 cursor-pointer border-1 focus:bg-gray-300 rounded-md"
+        >
+          Album Song
+        </button>
+      </div>
+
+      {/* Videos grid */}
+      <ul className="grid grid-cols-1 sm:grids-cols-2 md:grid-cols-2 lg:grid-cols-3 sm:mx-30 gap-7 sm:ml-70 ml-20 sm:mr-50 my-10">
+        {videos && videos.length > 0 ? (
+          videos.map((video) => (
+            <Link key={video._id} to={`/${video._id}`}>
+              <li className="shadow-md rounded-lg bg-gray-100 w-50 sm:w-auto hover:scale-105">
+                <img
+                  src={video.thumbnailUrl}
+                  alt={video.title || "Video thumbnail"}
+                  className="h-50 w-50 sm:w-150"
+                />
+                <div className="p-2">
+                  <p className="font-bold">{video.title}</p>
+                  <p>{video.channel.channelName}</p>
+                  <p>{video.category}</p>
+                </div>
+              </li>
+            </Link>
+          ))
+        ) : (
+          <li className="relative w-screen h-screen justify-center align-middle text-red-500">
+            No Videos to display
+          </li>
+        )}
+      </ul>
     </>
   );
 }

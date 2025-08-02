@@ -32,3 +32,4 @@ const videoSchema =  new mongoose.Schema({
 const VideoModel = mongoose.model('Video', videoSchema);
 
 export default VideoModel;
+// This code defines a Mongoose schema for a Video model in a MongoDB database.

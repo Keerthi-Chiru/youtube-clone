@@ -4,11 +4,18 @@ import { FaSadTear } from "react-icons/fa";
 export default function ErrorPage() {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100 px-4 text-center">
+      {/* Sad tear icon */}
       <FaSadTear className="text-red-500 text-6xl mb-4" />
+
+      {/* Main error message */}
       <h1 className="text-4xl font-bold text-gray-800 mb-2">Oops! Page Not Found</h1>
+
+      {/* Additional error info */}
       <p className="text-gray-600 mb-6">
         The page you're looking for doesn’t exist or has been moved.
       </p>
+
+      {/* Link to navigate back home */}
       <Link
         to="/"
         className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-md transition duration-200"
