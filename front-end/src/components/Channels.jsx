@@ -109,21 +109,21 @@ const handleDelete = async (e, channelId) => {
     <>
       <h2 className="text-2xl font-bold mb-6 mt-10 text-red-500 text-center">Your Channels</h2>
 
-      <div className="flex flex-col items-center gap-6 px-10">
+      <div className="sm:flex sm:flex-col items-center gap-6 md:px-10 text-sm md:ml-20 lg:ml-0">
         {channels.map((channel) => (
           <div key={channel._id} className="w-full max-w-3xl border p-4 rounded shadow-md bg-white flex justify-between">
             <div>
               <h3 className="font-semibold text-lg">{channel.channelName}</h3>
               <p>{channel.channelDescription}</p>
             </div>
-            <div className="flex flex-col items-center gap-2">
+            <div className="sm:flex sm:flex-col  items-center gap-2">
               <div className="font-bold">{`Total Videos: ${channel.videos.length}`}</div>
               <div className="flex gap-4 h-10">
                 <button className="flex items-center bg-red-500 text-white rounded hover:bg-red-700 px-3" onClick={(e)=> handleView(e, channel._id)}>
-                  View <GrFormView className="ml-2 text-xl" />
+                  View <GrFormView className="ml-2 sm:text-xl" />
                 </button>
                 <button className="flex items-center bg-red-500 text-white rounded hover:bg-red-700 px-3" onClick={(e)=>handleDelete(e, channel._id)}>
-                  Delete <MdDeleteForever className="ml-2 text-xl" />
+                  Delete <MdDeleteForever className="ml-2 sm:text-xl" />
                 </button>
               </div>
             </div>

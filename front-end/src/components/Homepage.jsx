@@ -49,18 +49,18 @@ export default function HomePage() {
 
   return (
     <>
-        <div className="mx-70 flex gap-7 mt-5">
+        <div className="sm:mx-70 px-20 sm:px-0 grid grid-cols-1  sm:flex gap-7 mt-5 w-screen">
           <button onClick={()=>setCategory('All')} className="shadow-md  px-2 bg-gray-200 cursor-pointer border-1 focus:bg-gray-300 rounded-md">All</button>
           <button onClick={()=>setCategory('Short Movie')} className="shadow-md  px-2 bg-gray-200 cursor-pointer border-1 focus:bg-gray-300 rounded-md">Short Movie</button>
           <button onClick={()=>setCategory('Short Video')} className="shadow-md  px-2 bg-gray-200 cursor-pointer border-1 focus:bg-gray-300 rounded-md">Short Video</button>
           <button onClick={()=>setCategory('Album Song')} className="shadow-md  px-2 bg-gray-200 cursor-pointer border-1 focus:bg-gray-300 rounded-md">Album Song</button>
         </div>
-        <ul className="grid grid-cols-3 mx-30 gap-7 ml-70 my-10">
+        <ul className="grid grid-cols-1 sm:grids-cols-2 md:grid-cols-2 lg:grid-cols-3 sm:mx-30 gap-7 sm:ml-70 ml-20  sm:mr-50 my-10">
           {videos && videos.length > 0 ? (
             videos.map((video) => (
               <Link to={`/${video._id}`}>
-                <li key={video._id} className="shadow-md rounded-lg bg-gray-100 hover:scale-105">
-                      <img src={video.thumbnailUrl} alt={video.title || "Video thumbnail"} className="h-50 w-150" />
+                <li key={video._id} className="shadow-md rounded-lg bg-gray-100 w-50 sm:w-auto hover:scale-105">
+                      <img src={video.thumbnailUrl} alt={video.title || "Video thumbnail"} className="h-50 w-50 sm:w-150" />
                       <div className="p-2">
                       <p className="font-bold">{video.title}</p>
                       <p>{video.channel.channelName}</p>

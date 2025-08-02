@@ -96,12 +96,12 @@ export default function Channel(){
 
 return (
   <>
-    <div className="flex justify-center mt-5 ">
-      <img src="..\src\assets\welcome.jpeg" className="w-280 h-40 ml-40 rounded-md shadow-md hover:scale-101" />
+    <div className="flex justify-center mt-5 pr-20">
+      <img src="..\src\assets\welcome.jpeg" className="lg:w-280 lg:h-40 md:w-100 w-80  h-30 ml-40 rounded-md shadow-md hover:scale-101" />
     </div>
 
     {channel ? (
-      <div className="ml-65  mt-5">
+      <div className="md:ml-65  ml-20 mt-5">
         <h1 className="text-5xl font-bold my-2 pl-1 text-red-500 underline">{channel.channelName}</h1>
         <p className="p-2">{channel.channelDescription}</p>
         <p className="p-2">Welcome to my Channel</p>
@@ -110,12 +110,12 @@ return (
       <p className="text-center mt-10 text-gray-500">Loading channel info...</p>
     )}
 
-    <ul className="grid grid-cols-3 mx-30 gap-7 ml-65 my-10">
+    <ul className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 md:mx-30 gap-7 md:ml-65 my-10 ml-20">
           {videos && videos.length > 0 ? (
             videos.map((video) => (
               <Link to={`/${video._id}`} >
-                <li key={video._id} className="shadow-md rounded-lg bg-gray-100 hover:scale-105">
-                      <img src={video.thumbnailUrl} alt={video.title || "Video thumbnail"} className="h-50 w-150" />
+                <li key={video._id} className="shadow-lg rounded-lg bg-gray-100 hover:scale-102 ">
+                      <img src={video.thumbnailUrl} alt={video.title || "Video thumbnail"} className="h-50 w-150 rounded-t-lg" />
                       <div className="p-2">
                       <p className="font-bold">{video.title}</p>
                       <p>{video.channel.channelName}</p>

@@ -15,7 +15,7 @@ export default function Header({ searchQuery, setSearchQuery}){
     let navigate = useNavigate();
     let users = JSON.parse(localStorage.getItem("user") || "null");
     const [search, setSearch] = useState("");
-    console.log(users.username)
+    console.log(users?.username)
 
 
 
@@ -39,13 +39,13 @@ export default function Header({ searchQuery, setSearchQuery}){
                     <input type="text" className="border-1 rounded-xl w-75 focus:bg-gray-200  p-1"  value={search} onChange={handleInputChange}></input>
                     <button className="text-xl hover:scale-105 cursor-pointer" onClick={handleSearch} ><FaMagnifyingGlass /></button>
                     </div>
-                    <div className="flex gap-10 pr-10 font-bold text-lg ">
+                    <div className="flex sm:gap-10 gap-2 sm:pr-10 font-bold text-lg ">
                     
                     {
                         (users) ? (<>
-                            <Link to="/upload" className="hover:scale-105 flex items-center gap-1 ">Upload<div><MdOutlineFileUpload /></div></Link>
-                            <Link to='/channels' className="hover:scale-105 flex items-center gap-1">Channel<div><GrChannel /></div></Link>
-                            <p className="hover:scale-105">Hi, {users.username}<Link  className=" flex items-center gap-1" onClick={handleLogout}> Logout<div className="text-2xl"><IoLogOut /></div></Link></p>
+                            <Link to="/upload" className="hover:scale-105 sm:flex items-center gap-1 text-sm sm:text-lg">Upload<div><MdOutlineFileUpload /></div></Link>
+                            <Link to='/channels' className="hover:scale-105 sm:flex items-center text-sm sm:text-lg gap-1">Channel<div><GrChannel /></div></Link>
+                            <p className="hover:scale-105 cursor-pointer text-sm sm:text-lg">Hi, {users?.username}<Link  className=" flex items-center gap-1" onClick={handleLogout}> Logout<div className="text-2xl"><IoLogOut /></div></Link></p>
                         </>):(<>
                             <Link to="/login" className="hover:scale-105 flex items-center gap-1">Login<div className="text-2xl"><IoLogIn /></div></Link>
                         </>)

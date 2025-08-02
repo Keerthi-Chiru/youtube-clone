@@ -100,7 +100,7 @@ if (!res.ok) {
 return (
   <>
     {videoData ? (
-      <div className="p-10 max-w-screen-md mx-auto">
+      <div className="p-10 max-w-screen-md sm:mx-auto mx-10 ">
         <iframe
           className="w-full aspect-video rounded-lg"
           src={videoData.videoUrl}
@@ -126,7 +126,7 @@ return (
 </p>
         <div className="flex gap-6 mt-4 text-sm">
           <div className="flex items-center text-lg">{videoData.views} views</div>
-          <button className="flex text-xl items-center gap-1" onClick={like} ><AiFillLike className="hover:scale-110 text-2xl text-blue-500" />{videoData.likes} </button>
+          <button className="flex text-xl items-center gap-1 cursor-pointer" onClick={like} ><AiFillLike className="hover:scale-110 text-2xl text-blue-500" />{videoData.likes} </button>
           <button className="flex text-xl items-center gap-1 cursor-pointer " onClick={dislike}><AiFillDislike className="hover:scale-110 text-2xl text-red-500 " />{videoData.dislikes}</button> 
         </div>
       <Comments videoId={videoData._id}/>

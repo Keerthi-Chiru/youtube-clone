@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import { useState } from "react";
 
 function App() {
@@ -16,10 +17,12 @@ function App() {
       <div className="fixed z-50">
       <Sidebar />
       </div>
-      <main className="flex-1 p-4 bg-gray-100">
+      <main className="flex-1 p-4 bg-gray-100 w-screen ">
         <Outlet context={{ searchQuery }} />
+        <Footer />
       </main>
     </div>
+    
     </div>
   );
 }

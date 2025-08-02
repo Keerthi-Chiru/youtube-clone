@@ -107,7 +107,7 @@ const handleDelete = async (commentId) => {
         console.log(cmt)
       if (!cmt || !cmt.text) return null; 
       return (
-        <li key={idx} className="border p-3 rounded">
+        <li key={idx} className="shadow-lg border p-3 rounded-md hover:scale-102 bg-white">
 {editCommentId === cmt._id ? (
   <div className="flex gap-2">
     <input
@@ -122,7 +122,7 @@ const handleDelete = async (commentId) => {
   <p className="text-gray-800">{cmt.text}</p>
 )}
 
-          <div className="text-sm font-semibold text-blue-600">{user?.username || "Anonymous"}
+          <div className="text-sm font-bold ">{user?.username || "Anonymous"}
           <div className="text-sm text-gray-500 flex gap-2">
             {cmt.timestamp ? new Date(cmt.timestamp).toLocaleString() : ""}
           </div>
@@ -132,8 +132,8 @@ const handleDelete = async (commentId) => {
 
   {user?.id === cmt.user._id && (
     <div className="flex gap-2">
-      <button onClick={() => handleEdit(cmt)}>Edit</button>
-      <button onClick={() => handleDelete(cmt._id)}>Delete</button>
+      <button onClick={() => handleEdit(cmt)} className=" bg-blue-600  text-white hover:bg-black rounded-md px-1">Edit</button>
+      <button onClick={() => handleDelete(cmt._id)} className="bg-red-500 text-white hover:bg-red-700 rounded-md px-1">Delete</button>
     </div>
   )}
 </div>

@@ -80,7 +80,7 @@ export default function Upload(){
             return (
                 <>
                     <div className="mt-12 flex items-center justify-center bg-gray-100">
-                        <form onSubmit={handleUpload} className="bg-white p-8 rounded shadow-md w-full max-w-md">
+                        <form onSubmit={handleUpload} className="bg-white p-8 rounded shadow-md w-full  max-w-md">
                             <h1 className="text-2xl text-red-500 font-bold mb-6 text-center">Upload new video</h1>
                             <input
                                 type="text"

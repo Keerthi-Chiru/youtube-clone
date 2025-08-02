@@ -10,13 +10,17 @@ import Channels from './components/Channels.jsx'
 import Video from './components/Video.jsx'
 import Channel from './components/Channel.jsx'
 import Edit from './components/Edit.jsx'
+import PrivacyPolicy from './components/PrivacyPolicy.jsx'
+import TermsOfService from './components/TermsofService.jsx'
+import Contact from './components/Contact.jsx'
+import ErrorPage from './components/ErrorPage.jsx'
 
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    // errorElement: <NotFound />,
+    errorElement: <ErrorPage />,
     children:[
       {
         path: '/',
@@ -49,6 +53,18 @@ const router = createBrowserRouter([
       {
         path: '/edit/:videoId',
         element: <Edit />
+      },
+      {
+        path: '/privacy',
+        element: <PrivacyPolicy />
+      },
+      {
+        path: '/terms',
+        element: <TermsOfService />
+      },
+      {
+        path: '/contact',
+        element: <Contact />
       }
     ]
   }
