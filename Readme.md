@@ -54,8 +54,8 @@ This project was developed as a capstone assignment to demonstrate the practical
 
 1. **Clone the repository**
 
-git clone https://github.com/yourusername/mytube-mern-clone.git
-cd mytube-mern-clone
+git clone https://github.com/Keerthi-Chiru/youtube-clone
+cd youtube-clone
 
 text
 
@@ -77,9 +77,9 @@ text
 
 Create a `.env` file in the backend root folder with the following variables:
 
-PORT=7000
-MONGO_URI=your_mongo_connection_string
-JWT_SECRET=your_jwt_secret_key
+PORT=5000
+MONGO_URI=mongodb+srv://keerthi05niru:5tfkzSVnevwlS2MH@clusterchiru.1cmj9aw.mongodb.net/
+JWT_SECRET=ChiruKNC57
 
 text
 
@@ -89,15 +89,15 @@ Replace `your_mongo_connection_string` with your MongoDB URI and `your_jwt_secre
 
 1. Start the backend server:
 
-cd backend
+cd back-end
 npm start
 
 text
 
 2. Start the frontend development server (open a new terminal):
 
-cd frontend
-npm start
+cd front-end
+npm run dev
 
 text
 
