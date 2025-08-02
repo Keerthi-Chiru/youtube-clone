@@ -1,20 +1,24 @@
-import { StrictMode } from 'react'
+import { lazy, StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App.jsx'
-import Register from './components/Register.jsx'
-import Login from './components/Login.jsx'
-import HomePage from './components/Homepage.jsx'
-import Upload from './components/Upload.jsx'
-import Channels from './components/Channels.jsx'
-import Video from './components/Video.jsx'
-import Channel from './components/Channel.jsx'
-import Edit from './components/Edit.jsx'
-import PrivacyPolicy from './components/PrivacyPolicy.jsx'
-import TermsOfService from './components/TermsofService.jsx'
-import Contact from './components/Contact.jsx'
 import ErrorPage from './components/ErrorPage.jsx'
+import './App.css'
 
+const Register = lazy(() => import('./components/Register.jsx'));
+const Login = lazy(() => import('./components/Login.jsx'));
+const Homepage = lazy(() => import('./components/Homepage.jsx'));
+const Upload = lazy(() => import('./components/Upload.jsx'));
+const Channels = lazy(() => import('./components/Channels.jsx'));
+const Edit = lazy(() => import('./components/Edit.jsx'));
+const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy.jsx'));
+const TermsOfService = lazy(() => import('./components/TermsofService.jsx'));
+const Contact = lazy(() => import('./components/Contact.jsx'));
+const Channel = lazy(()=> import('./components/Channel.jsx'));
+const Video = lazy(()=> import('./components/Video.jsx'));
+
+
+const fallback = <div className="text-center py-10 text-lg">Loading...</div>;
 
 const router = createBrowserRouter([
   {
@@ -24,47 +28,69 @@ const router = createBrowserRouter([
     children:[
       {
         path: '/',
-        element: <HomePage />
+        element: <Suspense fallback={fallback}>
+        <Homepage />
+        </Suspense>
       },
       {
         path: '/login',
-        element: <Login />
+        element: <Suspense fallback={fallback}>
+        <Login />
+        </Suspense>
       },
       {
         path: '/register',
-        element: <Register />
+        element: <Suspense fallback={fallback}>
+        <Register />
+        </Suspense>
       },
       {
         path: '/upload',
-        element: <Upload />
+        element: <Suspense fallback={fallback}>
+        <Upload />
+        </Suspense>
       },
       {
         path: '/channels',
-        element: <Channels />
+        element: <Suspense fallback={fallback}>
+        <Channels />
+        </Suspense>
       },
       {
         path: '/:videoId',
-        element: <Video />
+        element: <Suspense fallback={fallback}>
+        <Video />
+        </Suspense>
       },
       {
         path: '/channel/:channelId',
-        element: <Channel />
+        element: <Suspense fallback={fallback}>
+        <Channel />
+        </Suspense>
       },
       {
         path: '/edit/:videoId',
-        element: <Edit />
+        element: <Suspense fallback={fallback}>
+        <Edit />
+        </Suspense>
       },
       {
         path: '/privacy',
-        element: <PrivacyPolicy />
+        element: <Suspense fallback={fallback}>
+        <PrivacyPolicy />
+        </Suspense>
       },
       {
         path: '/terms',
-        element: <TermsOfService />
+        element: <Suspense fallback={fallback}>
+        <TermsOfService />
+        </Suspense>
       },
       {
         path: '/contact',
-        element: <Contact />
+        element: <Suspense fallback={fallback}>
+        <Contact />
+        </Suspense>
       }
     ]
   }

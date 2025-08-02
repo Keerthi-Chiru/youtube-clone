@@ -45,7 +45,7 @@ export default function Header({ searchQuery, setSearchQuery}){
                         (users) ? (<>
                             <Link to="/upload" className="hover:scale-105 sm:flex items-center gap-1 text-sm sm:text-lg">Upload<div><MdOutlineFileUpload /></div></Link>
                             <Link to='/channels' className="hover:scale-105 sm:flex items-center text-sm sm:text-lg gap-1">Channel<div><GrChannel /></div></Link>
-                            <p className="hover:scale-105 cursor-pointer text-sm sm:text-lg">Hi, {users?.username}<Link  className=" flex items-center gap-1" onClick={handleLogout}> Logout<div className="text-2xl"><IoLogOut /></div></Link></p>
+                            <div className="hover:scale-105 cursor-pointer text-sm sm:text-lg">Hi, {users?.username}<Link  className=" flex items-center gap-1" onClick={handleLogout}> Logout<p className="text-2xl"><IoLogOut /></p></Link></div>
                         </>):(<>
                             <Link to="/login" className="hover:scale-105 flex items-center gap-1">Login<div className="text-2xl"><IoLogIn /></div></Link>
                         </>)
