@@ -32,11 +32,15 @@ export default function Header({ searchQuery, setSearchQuery }) {
     setSearchQuery(search);
   }
 
+  function handleHome(){
+    setSearchQuery("");
+  }
+
   return (
     <>
       <navbar className="flex sticky top-0 z-50 h-20 items-center bg-gray-100 shadow-md p-3 justify-between">
         {/* Logo and home link */}
-        <Link to="/" className="flex md:text-4xl font-[logo] text-red-500 hover:scale-105 text-xl">
+        <Link to="/" className="flex md:text-4xl font-[logo] text-red-500 hover:scale-105 text-xl" onClick={handleHome}>
           <p>MyTube</p>
           <div className="text-4xl">
             <FaYoutube />

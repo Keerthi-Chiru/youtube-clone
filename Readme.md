@@ -174,9 +174,13 @@ text
 *You can add relevant screenshots here showing your UI on desktop, tablet, and mobile, e.g.:*
 
 - Home page with video thumbnails and search bar  
+![alt text](image.png)
 - Video player page with comments section  
+![alt text](image-1.png)
 - Channel page listing videos and upload form  
+![alt text](image-2.png)
 - Authentication pages (login/registration)
+![alt text](image-3.png)
 
 ## Contributing
 

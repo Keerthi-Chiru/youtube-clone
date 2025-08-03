@@ -133,7 +133,7 @@ export default function Comments({ videoId }) {
 
                                 {/* Comment metadata */}
                                 <div className="text-sm font-bold">
-                                    {user?.username || "Anonymous"}
+                                    {cmt.user?.username || cmt.user?.name || "Anonymous"}
                                     <div className="text-sm text-gray-500 flex gap-2">
                                         {cmt.timestamp ? new Date(cmt.timestamp).toLocaleString() : ""}
                                     </div>
